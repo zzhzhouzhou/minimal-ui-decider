@@ -2,6 +2,14 @@
 
 本项目版本通过 CHANGELOG 与 Git tags 维护（不写入 SKILL.md frontmatter）。
 
+## v1.4.0 — 2026-09-12
+
+适配 `gh skill` 安装。**Skill 内容无变更。**
+
+- 仓库布局调整为 `gh skill` / Agent Skills 识别的标准多 skill 布局：Skill 包移入 **`skills/minimal-ui-decider/`**（`skills/<skill-name>/SKILL.md`，skill 名与目录名一致）；README、LICENSE、CHANGELOG 留在仓库根，不进入安装产物。
+- README 安装说明改为两条路径：`gh skill install zzhzhouzhou/minimal-ui-decider minimal-ui-decider`（GitHub CLI ≥ 2.90.0，支持 `--agent` / `--scope` / `@版本` 固定）与手动复制（克隆后复制 `skills/minimal-ui-decider/`）。
+- 维护约定补充：Skill 目录名必须与 frontmatter `name` 一致，否则 `gh skill` 无法识别。
+
 ## v1.3.0 — 2026-09-12
 
 更名、仓库结构扁平化与复审修复。**无规则 ID 语义变更。**

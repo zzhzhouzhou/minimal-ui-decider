@@ -74,33 +74,66 @@ Tests        = Whether the Agent behaves correctly（tests/，行为回归）
 ## 目录结构
 
 ```text
-minimal-ui-decider/                   ← 仓库根 = Agent Skill 包本体（SKILL.md + references + recipes + tests）
-├── SKILL.md                          ← 入口：frontmatter、12 步工作流、决策速查、按需加载路由表
-├── references/                       ← 规则与规范（按需加载）
-│   ├── decision.md                   ← C/M/S/Y 规则全文（Rule → Check → Fail signal）、豁免、冲突处理、决策矩阵
-│   ├── checklist.md                  ← 唯一的统一走查清单（全局项 + 领域附加项 + 自动化检查映射）
-│   ├── accessibility.md              ← C-01…C-06 无障碍底线展开、对比度 canonical 定义
-│   ├── visual.md                     ← 视觉层级、Intent Translation（「更高级」如何转译为设计策略）
-│   ├── tokens.md                     ← 色彩 / 字阶 / 间距 / 圆角 / 层级 / 动效 / 断点的唯一定义处
-│   ├── interaction.md                ← 交互状态全集与反馈时机（100ms / 300ms / 3s）
-│   ├── responsive.md                 ← 移动优先、布局转换、320px 底线
-│   ├── motion.md                     ← 动效规则与动画令牌
-│   ├── engineering.md                ← 工程默认 + 非 React 项目的 Stack Adaptation 映射表
-│   ├── handbook.md                   ← UI Handbook 事实来源 + 组件计数约定
-│   └── counterexamples.md            ← E-01…E-17 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
-├── recipes/                          ← 按组件家族的实现模式：basic-components / forms / navigation /
-│                                      feedback-overlays / data-display / advanced-interactions
-├── tests/                            ← 行为回归：T-01…T-12 场景 + 预期行为 + 回归记录
-└── LICENSE · README.md · CHANGELOG.md
+minimal-ui-decider/                   ← 仓库根
+├── skills/
+│   └── minimal-ui-decider/          ← Agent Skill 包（安装时复制 / gh skill 安装的就是这个目录）
+│       ├── SKILL.md                 ← 入口：frontmatter、12 步工作流、决策速查、按需加载路由表
+│       ├── references/              ← 规则与规范（按需加载）
+│       │   ├── decision.md          ← C/M/S/Y 规则全文（Rule → Check → Fail signal）、豁免、冲突处理、决策矩阵
+│       │   ├── checklist.md         ← 唯一的统一走查清单（全局项 + 领域附加项 + 自动化检查映射）
+│       │   ├── accessibility.md     ← C-01…C-06 无障碍底线展开、对比度 canonical 定义
+│       │   ├── visual.md            ← 视觉层级、Intent Translation（「更高级」如何转译为设计策略）
+│       │   ├── tokens.md            ← 色彩 / 字阶 / 间距 / 圆角 / 层级 / 动效 / 断点的唯一定义处
+│       │   ├── interaction.md       ← 交互状态全集与反馈时机（100ms / 300ms / 3s）
+│       │   ├── responsive.md        ← 移动优先、布局转换、320px 底线
+│       │   ├── motion.md            ← 动效规则与动画令牌
+│       │   ├── engineering.md       ← 工程默认 + 非 React 项目的 Stack Adaptation 映射表
+│       │   ├── handbook.md          ← UI Handbook 事实来源 + 组件计数约定
+│       │   └── counterexamples.md   ← E-01…E-17 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
+│       ├── recipes/                 ← 按组件家族的实现模式：basic-components / forms / navigation /
+│       │                              feedback-overlays / data-display / advanced-interactions
+│       └── tests/                   ← 行为回归：T-01…T-12 场景 + 预期行为 + 回归记录
+├── LICENSE · README.md · CHANGELOG.md
 ```
 
 ## 安装与使用
 
-任意支持 Agent Skills 标准（`SKILL.md` + YAML frontmatter）的平台均可安装：
+### 方式一：`gh skill` 安装（推荐，需 GitHub CLI ≥ 2.90.0）
 
-1. 复制 `minimal-ui-decider/`（即克隆本仓库后把含 `SKILL.md` 的目录）到你的 skill 目录（如 `~/.agents/skills/`），或在配置中把包含它的目录加入自定义 skill 根（如 `customSkillDirs`）。
-2. 之后在任何 UI 任务中（新建页面、改组件、加表单、做响应式、审查无障碍等），Agent 会加载 `SKILL.md`，并按任务语义加载相关文件。
-3. 使用时无需记忆规则编号；规则通过决策速查表和路由表进入上下文，需要完整定义时再查 `decision.md`。
+```bash
+gh skill install zzhzhouzhou/minimal-ui-decider minimal-ui-decider
+```
+
+执行后会交互式选择目标 Agent（Copilot / Claude Code / Cursor / Codex / Gemini CLI 等）和作用范围（项目级 / 用户级）。也可以用参数一次指定：
+
+```bash
+# 安装到 Claude Code，用户级
+gh skill install zzhzhouzhou/minimal-ui-decider minimal-ui-decider --agent claude-code --scope user
+```
+
+需要固定版本时，在 skill 名后附加标签（或用 `--pin` 阻止 `gh skill update` 自动更新）：
+
+```bash
+gh skill install zzhzhouzhou/minimal-ui-decider minimal-ui-decider@v1.4.0
+```
+
+之后用 `gh skill update` 跟随上游修订。
+
+### 方式二：手动安装（任意支持 Agent Skills 标准的平台）
+
+克隆仓库，把 `skills/minimal-ui-decider/`（含 `SKILL.md` 的目录）复制到 Agent 的 skill 目录：
+
+```bash
+git clone https://github.com/zzhzhouzhou/minimal-ui-decider.git
+cp -r minimal-ui-decider/skills/minimal-ui-decider ~/.agents/skills/
+```
+
+用户级目录（如 `~/.agents/skills/`）或项目级目录（`.claude/skills/`、`.github/skills/`、`.agents/skills/`）均可；也可以在配置中把该目录加入自定义 skill 根（如 `customSkillDirs`）。
+
+### 使用
+
+1. 在任何 UI 任务中（新建页面、改组件、加表单、做响应式、审查无障碍等），Agent 会加载 `SKILL.md`，并按任务语义加载相关文件。
+2. 使用时无需记忆规则编号；规则通过决策速查表和路由表进入上下文，需要完整定义时再查 `decision.md`。
 
 规则是否生效，直接观察 Agent 的行为即可：
 
@@ -131,6 +164,7 @@ minimal-ui-decider/                   ← 仓库根 = Agent Skill 包本体（SK
 - **新增反例**：遵循 `counterexamples.md` 的统一结构（Wrong / Why / Right / Root cause / Related rules），并同步更新文末「规则 ↔ 反例索引」。
 - **Handbook 新增组件时**：按 `handbook.md` §组件计数约定同步五处快照数字（handbook §事实、SKILL.md、README、engineering.md、CHANGELOG）。对外表述一律写「115+」，`+` 表示持续新增；数字不一致时以 handbook 清单实际 id 数为准。
 - **走查清单只改一处**：所有检查项集中在 `checklist.md`，各 reference / recipe 只引用，避免多份清单逐渐分歧。
+- **Skill 目录名保持 `skills/minimal-ui-decider/`**：`gh skill` 按「目录名 = frontmatter `name`」识别 skill，改名会破坏安装与更新。
 - 版本记录在 `CHANGELOG.md` 与 Git tags，不写入 frontmatter。
 
 ## 相关链接

@@ -114,7 +114,7 @@ npm install lucide-react   // 只为了一个 search 图标
 
 **Related rules**
 
-- M-03 · Y 层（Y-01…Y-25，增强需通过复杂度测试）
+- M-03
 
 ## E-05 · Unnecessary abstraction
 

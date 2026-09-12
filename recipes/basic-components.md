@@ -63,7 +63,7 @@ export function Button({ variant = "primary", size = "md", loading, disabled, ch
       key={o.value}
       role="radio"
       aria-checked={value === o.value}
-      className={cn("h-8 rounded px-3 text-sm", value === o.value ? "bg-white font-medium shadow-sm" : "text-zinc-500 hover:text-zinc-900")}
+      className={cn("h-8 rounded px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900", value === o.value ? "bg-white font-medium shadow-sm" : "text-zinc-500 hover:text-zinc-900")}
       onClick={() => onChange(o.value)}
     >
       {o.label}

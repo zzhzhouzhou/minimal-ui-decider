@@ -237,16 +237,7 @@ diff 中是否只包含任务相关的变更。
 
 高级视觉与交互，默认不开启；使用前必须通过下面的复杂度测试。
 
-**完整定义（效果 ↔ Y 编号 ↔ 等级）的事实来源是 `recipes/advanced-interactions.md`**，编号速查：
-
-```text
-Y-01 Spotlight（bg/card）      Y-05 Custom cursor    Y-09  Scramble
-Y-02 Magnetic                  Y-06 Parallax         Y-10  Beam
-Y-03 Tilt                      Y-07 Glass            Y-11  3D（含 Knob/Stack）
-Y-04 Particles                 Y-08 Noise            Y-12  View Transitions
-                                                        （+ countup / reveal / swipe / confetti 等
-                                                          基础级增强，见 recipes 编号表）
-```
+> **「效果 ↔ Y 编号（Y-01…Y-25）↔ 等级」的完整对照是 canonical，定义在 `recipes/advanced-interactions.md` §Y 编号对照表；本文件不再重复编号速查，避免两处漂移。** 所有 Y 级效果都属于 MAY，使用前跑复杂度测试。
 
 ## 复杂度测试（Y 效果与任何多余实现都必须通过）
 
@@ -301,6 +292,8 @@ Y: Follow user directly
 目标不是阻止用户，而是**让用户知道重要的 trade-off。**
 
 ## Decision Matrix（快速决策）
+
+> `SKILL.md` §决策速查 是本表的精简摘录；修改本表时按 SKILL.md 的维护约定同步核对该摘录，防止两处漂移。
 
 | 情况 | 默认决策 |
 |---|---|

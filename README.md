@@ -60,7 +60,7 @@ Agent 接到 UI 任务后执行 12 步工作流，核心顺序：
 → 机械验证（构建 / lint / axe）+ 统一走查清单 → 删除测试 → 交付
 ```
 
-`SKILL.md` 是入口文件（135 行），包含工作流、决策速查表和一张按语义分类的路由表。具体规则按任务加载对应文件，避免一次性读入全部内容——例如改表单时加载 `recipes/forms.md`，审查无障碍时加载 `references/accessibility.md`。路由按语义判断：用户说「让页面更高级」，即使没提色彩和字体，也应加载视觉规范。
+`SKILL.md` 是入口文件（精简的 router，避免写死行数），包含工作流、决策速查表和一张按语义分类的路由表。具体规则按任务加载对应文件，避免一次性读入全部内容——例如改表单时加载 `recipes/forms.md`，审查无障碍时加载 `references/accessibility.md`。路由按语义判断：用户说「让页面更高级」，即使没提色彩和字体，也应加载视觉规范。
 
 三层分工：
 
@@ -74,32 +74,31 @@ Tests        = Whether the Agent behaves correctly（tests/，行为回归）
 ## 目录结构
 
 ```text
-minimal-ui-decider/
-├── minimal-ui-engineering/          ← Agent Skill 包（安装时复制这个目录）
-│   ├── SKILL.md                     ← 入口：frontmatter、12 步工作流、决策速查、按需加载路由表
-│   ├── references/                  ← 规则与规范（按需加载）
-│   │   ├── decision.md              ← C/M/S/Y 规则全文（Rule → Check → Fail signal）、豁免、冲突处理、决策矩阵
-│   │   ├── checklist.md             ← 唯一的统一走查清单（全局项 + 领域附加项 + 自动化检查映射）
-│   │   ├── accessibility.md         ← C-01…C-06 无障碍底线展开、对比度 canonical 定义
-│   │   ├── visual.md                ← 视觉层级、Intent Translation（「更高级」如何转译为设计策略）
-│   │   ├── tokens.md                ← 色彩 / 字阶 / 间距 / 圆角 / 层级 / 动效 / 断点的唯一定义处
-│   │   ├── interaction.md           ← 交互状态全集与反馈时机（100ms / 300ms / 3s）
-│   │   ├── responsive.md            ← 移动优先、布局转换、320px 底线
-│   │   ├── motion.md                ← 动效规则与动画令牌
-│   │   ├── engineering.md           ← 工程默认 + 非 React 项目的 Stack Adaptation 映射表
-│   │   ├── handbook.md              ← UI Handbook 事实来源 + 组件计数约定
-│   │   └── counterexamples.md       ← E-01…E-17 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
-│   ├── recipes/                     ← 按组件家族的实现模式：basic-components / forms / navigation /
-│   │                                   feedback-overlays / data-display / advanced-interactions
-│   └── tests/                       ← 行为回归：T-01…T-12 场景 + 预期行为 + 回归记录
-├── LICENSE · README.md · CHANGELOG.md
+minimal-ui-decider/                   ← 仓库根 = Agent Skill 包本体（SKILL.md + references + recipes + tests）
+├── SKILL.md                          ← 入口：frontmatter、12 步工作流、决策速查、按需加载路由表
+├── references/                       ← 规则与规范（按需加载）
+│   ├── decision.md                   ← C/M/S/Y 规则全文（Rule → Check → Fail signal）、豁免、冲突处理、决策矩阵
+│   ├── checklist.md                  ← 唯一的统一走查清单（全局项 + 领域附加项 + 自动化检查映射）
+│   ├── accessibility.md              ← C-01…C-06 无障碍底线展开、对比度 canonical 定义
+│   ├── visual.md                     ← 视觉层级、Intent Translation（「更高级」如何转译为设计策略）
+│   ├── tokens.md                     ← 色彩 / 字阶 / 间距 / 圆角 / 层级 / 动效 / 断点的唯一定义处
+│   ├── interaction.md                ← 交互状态全集与反馈时机（100ms / 300ms / 3s）
+│   ├── responsive.md                 ← 移动优先、布局转换、320px 底线
+│   ├── motion.md                     ← 动效规则与动画令牌
+│   ├── engineering.md                ← 工程默认 + 非 React 项目的 Stack Adaptation 映射表
+│   ├── handbook.md                   ← UI Handbook 事实来源 + 组件计数约定
+│   └── counterexamples.md            ← E-01…E-17 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
+├── recipes/                          ← 按组件家族的实现模式：basic-components / forms / navigation /
+│                                      feedback-overlays / data-display / advanced-interactions
+├── tests/                            ← 行为回归：T-01…T-12 场景 + 预期行为 + 回归记录
+└── LICENSE · README.md · CHANGELOG.md
 ```
 
 ## 安装与使用
 
 任意支持 Agent Skills 标准（`SKILL.md` + YAML frontmatter）的平台均可安装：
 
-1. 复制 `minimal-ui-engineering/` 到你的 skill 目录（如 `~/.agents/skills/`），或在配置中把包含它的目录加入自定义 skill 根（如 `customSkillDirs`）。
+1. 复制 `minimal-ui-decider/`（即克隆本仓库后把含 `SKILL.md` 的目录）到你的 skill 目录（如 `~/.agents/skills/`），或在配置中把包含它的目录加入自定义 skill 根（如 `customSkillDirs`）。
 2. 之后在任何 UI 任务中（新建页面、改组件、加表单、做响应式、审查无障碍等），Agent 会加载 `SKILL.md`，并按任务语义加载相关文件。
 3. 使用时无需记忆规则编号；规则通过决策速查表和路由表进入上下文，需要完整定义时再查 `decision.md`。
 

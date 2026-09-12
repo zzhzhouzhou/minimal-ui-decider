@@ -236,7 +236,7 @@ reduced motion 降级
 
 ## 半自动化运行建议（降低回归成本）
 
-场景中「可观察的行为」多数可以脚本断言，人工只评决策序列与禁止项。建议维护 `tests/fixture/`（最小 React + TypeScript + Tailwind 项目），回归时让 Agent 在 fixture 上执行场景输入：
+场景中「可观察的行为」多数可以脚本断言，人工只评决策序列与禁止项。**待建：** 建议维护 `tests/fixture/`（最小 React + TypeScript + Tailwind 项目，当前尚未随仓库提供——在 fixture 就绪前，本节的机制化运行不可用，回归以人工对照 `expected-behaviors.md` 为主）。fixture 就绪后，回归时让 Agent 在 fixture 上执行场景输入：
 
 | 场景 | 可机械化部分 | 方式 |
 | --- | --- | --- |

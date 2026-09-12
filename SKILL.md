@@ -1,5 +1,5 @@
 ---
-name: minimal-ui-engineering
+name: minimal-ui-decider
 description: Make design and implementation decisions for UI work (React + TypeScript + Tailwind examples; decision rules are stack-agnostic). Use when building, modifying, reviewing, or refactoring UI components, layouts, forms, navigation, responsive behavior, interaction states, accessibility, motion, or visual design — 构建/修改/审查 UI、组件、表单、布局、无障碍、响应式、动效时使用. Prefer the simplest solution that satisfies the user's goal while preserving existing project architecture and accessibility.
 ---
 

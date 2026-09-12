@@ -2,6 +2,23 @@
 
 本项目版本通过 CHANGELOG 与 Git tags 维护（不写入 SKILL.md frontmatter）。
 
+## v1.3.0 — 2026-09-12
+
+更名、仓库结构扁平化与复审修复。**无规则 ID 语义变更。**
+
+**更名与结构**
+
+- Skill 更名 **minimal-ui-decider**（与仓库名一致）：SKILL.md frontmatter `name` 同步；文档与示例中的旧名清理。
+- 仓库结构扁平化：**仓库根 = Agent Skill 包本体**（SKILL.md、references/、recipes/、tests/ 位于仓库根目录），克隆后整个目录即可作为 skill 安装；README 目录树同步。
+- SKILL.md：决策速查表补充维护约定（修改 decision.md §Decision Matrix 时同步核对摘录）；路由表将数据展示拆分为独立「小」档（与其他 recipes 分列）。
+
+**复审修复**
+
+- E-04 关联规则收敛为 M-03（移除与依赖反例无关的 Y 层引用）。
+- `decision.md` §Decision Matrix 增加与 SKILL.md §决策速查 的双向同步注记。
+- Switch / Segmented / Tabs 示例补 `focus-visible` 外框——示例代码是 Agent 最常照抄的部分，须自身满足 C-01 焦点可见。
+- `demo/` 走查页头注释同步更名（demo 保持本地维护，不随仓库发布）。
+
 ## v1.2.0 — 2026-09-12
 
 一致性与缺口修复 + 组件计数治理。**无规则 ID 语义变更**；编号变化仅新增反例 E-15…E-17。

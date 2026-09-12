@@ -70,7 +70,7 @@ function Field({ label, error, hint, id, ...props }: FieldProps) {
 - 选中态配合文字/勾选图标，不只靠颜色。
 
 ```tsx
-<button role="switch" aria-checked={on} onClick={() => setOn(!on)} className={cn("h-6 w-11 rounded-full transition-colors", on ? "bg-zinc-900" : "bg-zinc-300")}>
+<button role="switch" aria-checked={on} onClick={() => setOn(!on)} className={cn("h-6 w-11 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900", on ? "bg-zinc-900" : "bg-zinc-300")}>
   <span className={cn("block size-5 translate-x-0.5 rounded-full bg-white transition-transform", on && "translate-x-[22px]")} />
 </button>
 ```

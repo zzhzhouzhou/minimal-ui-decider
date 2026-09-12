@@ -30,7 +30,7 @@
       aria-selected={active === t.id}
       aria-controls={`panel-${t.id}`}
       tabIndex={active === t.id ? 0 : -1}
-      className={cn("h-9 px-3 text-sm", active === t.id ? "font-medium text-zinc-900 border-b-2 border-zinc-900" : "text-zinc-500 hover:text-zinc-900")}
+      className={cn("h-9 px-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900", active === t.id ? "font-medium text-zinc-900 border-b-2 border-zinc-900" : "text-zinc-500 hover:text-zinc-900")}
     >
       {t.label}
     </button>

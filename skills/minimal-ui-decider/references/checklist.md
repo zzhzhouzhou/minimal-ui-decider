@@ -79,6 +79,7 @@
 - [ ] 图标风格统一（全部线性或全部面性）
 - [ ] 按钮文案用动词，语气一致
 - [ ] 强调色 ≤ ~10% 面积；三个红色按钮会毁掉主次
+- [ ] Minimal / 极简任务：对照 `visual.md` §Minimal Style Matrix 逐维检查；必要信息与反馈未删减（E-18 / E-19）
 
 **响应式（`references/responsive.md`）**
 

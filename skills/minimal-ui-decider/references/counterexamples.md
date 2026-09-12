@@ -493,6 +493,85 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 - M-05 · `interaction.md` 状态全集 · S-09
 
+## E-18 · Minimal misread as removing necessary information
+
+**Wrong**
+
+```tsx
+// 「做得极简一点」→ 删掉 label、帮助文字和错误提示
+<input placeholder="搜索" />
+```
+
+**Why**
+
+- 删除必要信息不是简化，是破坏可用性：输入后字段含义消失（E-01）、错误不可见。
+- 极简的对象是视觉决策，不是信息与反馈。
+
+**Right**
+
+保留 label / 帮助 / 错误 / 反馈；删除的是装饰、多余表面与无目的动效。
+
+**Root cause**
+
+把「视觉上少」当成目标本身，忘了目标是减少决策负担。
+
+**Related rules**
+
+- C-04 · C-05 · `visual.md` §Minimal Style Preset
+
+## E-19 · Doctrinal stripping（教条式做减法）
+
+**Wrong**
+
+```tsx
+// 「极简风」= 全灰 + 全去边框 + 圆角归零 + 不用动画
+<div className="bg-neutral-100 text-neutral-800">…</div>
+```
+
+**Why**
+
+- 颜色承担层级 / 状态 / 身份，全灰让错误与重点不可辨（C-05）。
+- border 承担分组、边界与输入暗示，全去掉后结构不可读。
+- 圆角归零是 Brutalist 的语言，与极简无关。
+- 反馈类动效承担 feedback / continuity，删掉后操作失去回应。
+
+**Right**
+
+按 `visual.md` §Minimal Style Matrix 逐维决策：每个维度先问「它承担什么」，再决定去留；删的是无目的项。
+
+**Root cause**
+
+把风格词表（少颜色 / 少边框 / 少圆角 / 少动效）当成规则本身，而不是重新逐维做决策。
+
+**Related rules**
+
+- C-05 · S-03 · S-06 · `visual.md` §Minimal Style Preset 误读清单
+
+## E-20 · One template for every page（泛模板化）
+
+**Wrong**
+
+```tsx
+// 不看内容与场景，所有页面套同一套「白底 + 圆角卡片 + 灰色文字」
+```
+
+**Why**
+
+- 这已经不是极简，而是 generic：层级、品牌与内容差异被模板抹平。
+- 用户要求的是完成任务的结构，不是千篇一律的外观。
+
+**Right**
+
+从内容与任务出发建立层级与分组；个性允许来自品牌色、布局与文案节奏，无意义复杂度保持低。
+
+**Root cause**
+
+用「安全的主流样式」替代逐页的视觉决策，放弃了决策职责。
+
+**Related rules**
+
+- `visual.md` §Intent Translation · §Minimal Style Preset
+
 ---
 
 ## 反例索引（规则 ↔ 反例）
@@ -515,6 +594,9 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 | 动效纪律 | E-06 | E-08、E-13 |
 | 资源清理 | E-13 | — |
 | 环境容错 | E-14 | — |
+| Minimal 误读（删必要信息） | E-18 | — |
+| 教条式做减法 | E-19 | E-08 |
+| 泛模板化 | E-20 | — |
 | 复杂度测试 | E-05、E-08 | E-06 |
 
 > 维护约定：新增反例后同步更新本表；某规则连续两版都没有专属反例时，优先在下次迭代补充。（M-02 / M-04 / M-05 的缺口已于 v1.2.0 补齐：E-15 / E-16 / E-17。）

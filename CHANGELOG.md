@@ -2,6 +2,17 @@
 
 本项目版本通过 CHANGELOG 与 Git tags 维护（不写入 SKILL.md frontmatter）。
 
+## v1.5.0 — 2026-09-12（未推送）
+
+Minimal Style Preset：把核心哲学具体化为可执行的默认视觉语言。**无规则 ID 语义变更**；新增反例 E-18…E-20、测试场景 T-13。
+
+- `visual.md` 新增 §Minimal Style Preset：使用时机（用户明确提出简洁类意图，或未指定风格且项目无主导风格时的默认基线）、核心原则（减少不必要的视觉决策，保留必要信息与反馈）、Style Matrix（13 个维度 × 倾向 × 决策问题）、常见误读清单（全灰 / 删必要信息 / 去边框 / 圆角归零 / 无动效 / 泛模板化）、从真实产品提炼的决策规则（Apple / Linear / Vercel / Stripe / Notion / Arc）；Intent Translation「极简」行与总原则注记指向该节。
+- 新增反例 E-18（极简误读为删必要信息）、E-19（教条式做减法：全灰 / 去边框 / 圆角归零 / 无动效）、E-20（泛模板化）；反例索引同步。
+- 新增测试场景 T-13「把这个页面做得更极简」（scenarios + expected-behaviors），回归编号扩至 T-01…T-13。
+- SKILL.md：决策速查新增「简洁 / 极简」行（decision.md §Decision Matrix 同步，维持双向一致）；路由「视觉」行触发词补「更简洁」；高频错误的「强制全灰」条目扩为 Minimal 误读总条目（E-18…E-20）。
+- `checklist.md` §视觉附加项新增 Minimal 逐维核对项。
+- 结构预留：后续若新增 Editorial / Playful 等风格，Preset 可从 visual.md 抽取为 `styles/` 目录；当前按 YAGNI 不预建。
+
 ## v1.4.0 — 2026-09-12
 
 适配 `gh skill` 安装。**Skill 内容无变更。**

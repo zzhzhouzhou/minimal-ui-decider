@@ -234,6 +234,25 @@ reduced motion 降级
 
 **验收方式**：决策记录包含复杂度测试三问与 trade-off 说明。
 
+## T-13 · 「把这个页面做得更极简」
+
+**Input**
+
+> 这个 dashboard 有点乱，帮我做得更极简一点。
+
+**Expected decision sequence**
+
+```text
+Intent Translation（"更极简" → visual.md §Minimal Style Preset）
+区分「减少视觉决策」与「删除必要信息」：label / 帮助 / 错误 / 反馈全部保留
+逐项跑复杂度测试：删除的只有装饰、冗余表面与无目的动效
+高信息密度区域用层级 / 分组 / 渐进呈现处理，不删功能
+不强制全灰 / 无边框 / 零圆角 / 无动效（E-19）
+复用现有组件与 tokens；最小 diff（M-01 / M-06）
+```
+
+**验收方式**：改动清单对照 Minimal Style Matrix 逐维核对；必要信息无缺失；适用交互状态（M-05）完整。
+
 ## 半自动化运行建议（降低回归成本）
 
 场景中「可观察的行为」多数可以脚本断言，人工只评决策序列与禁止项。**待建：** 建议维护 `tests/fixture/`（最小 React + TypeScript + Tailwind 项目，当前尚未随仓库提供——在 fixture 就绪前，本节的机制化运行不可用，回归以人工对照 `expected-behaviors.md` 为主）。fixture 就绪后，回归时让 Agent 在 fixture 上执行场景输入：

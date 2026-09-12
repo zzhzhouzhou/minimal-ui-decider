@@ -10,7 +10,7 @@ Visual 关注 **hierarchy（层级），而不是装饰数量**。数值令牌�
 2. **一切尺寸有出处**：字号、间距、圆角、高度从 token 表取值，不随手填写。
 3. **照顾所有人**：对比度达标、触控面积够大、键盘可用、尊重 reduced motion。
 
-> 极简 ≠ 灰度。不要为了「极简」强制所有 UI 使用黑白灰；颜色承担语义职责（background / foreground / muted / primary / danger / success）。
+> 极简 ≠ 灰度。不要为了「极简」强制所有 UI 使用黑白灰；颜色承担语义职责（background / foreground / muted / primary / danger / success）。完整误读清单见 §Minimal Style Preset。
 
 ## Intent Translation（用户意图 → 设计策略）
 
@@ -18,7 +18,7 @@ Visual 关注 **hierarchy（层级），而不是装饰数量**。数值令牌�
 
 | User intent | Design interpretation |
 |---|---|
-| 极简 | 减少不必要 hierarchy / decoration / state / dependency |
+| 极简 / 简洁 / clean | 按 §Minimal Style Preset 执行：减少不必要的视觉决策，保留必要信息与反馈 |
 | 高级 / premium | typography / spacing / material hierarchy / subtle motion（**不是** glass + gradient + glow） |
 | 未来感 | contrast / data geometry / purposeful motion |
 | 炫酷 | 可以提高效果强度，但不能破坏 hierarchy |
@@ -31,6 +31,63 @@ Visual 关注 **hierarchy（层级），而不是装饰数量**。数值令牌�
 ```text
 typography → spacing → hierarchy → material → subtle motion
 ```
+
+## Minimal Style Preset（默认视觉基线）
+
+极简是本 Skill 的默认视觉语言。它是一种可执行的决策策略，不是一种「少」的外观。
+
+### 何时使用（Intent）
+
+满足任一条件时按 Minimal 执行：
+
+- 用户要求「简洁 / 干净 / 克制 / 安静 / 聚焦 / 极简 / clean / minimal」。
+- 用户没有指定视觉风格，且现有项目没有占主导的既定风格（Existing Project First 优先于默认基线）。
+
+### 核心原则
+
+> **减少不必要的视觉决策，保留完成任务所必需的信息与反馈。**
+
+「少」的对象是决策（颜色、表面、装饰、动效的数量），从来不是信息、功能或可访问性。
+
+### Style Matrix（逐维倾向 + 决策问题）
+
+| Dimension | Minimal 倾向 | Agent 应该问的问题 |
+| --- | --- | --- |
+| Hierarchy | 强、显式 | 用户第一眼应该看到什么？第二眼呢？ |
+| Density | 低～中 | 哪些信息可以合并？高密度区靠层级与分组处理，不靠删功能 |
+| Typography | 承担层级 | 能否靠字号 / 字重建立层级，而不加新表面？ |
+| Spacing | 有意图 | 留白是在分组还是单纯撑空间？ |
+| Color | 克制但有语义 | 这个颜色承担什么语义？删掉它层级还在吗？ |
+| Surface | 少而明确 | 这个容器真的需要独立表面吗？ |
+| Border | 谨慎保留 | 没有 border 会不会影响分组 / 边界 / 输入暗示？ |
+| Shadow | 少量 | 阴影在表达层级还是装饰？ |
+| Radius | 一致、克制 | 圆角有设计或交互作用吗？（不是越小越极简） |
+| Decoration | 极少 | 去掉它会损失什么？（复杂度测试） |
+| Motion | 克制但有 | 动画在反馈还是表演？反馈类动效不因极简而消失 |
+| Icon | 功能优先 | 这个 icon 增加理解了吗？ |
+| Complexity | 低 | 有没有更简单的表达？ |
+
+### 常见误读（每一条都是失败模式）
+
+- Minimal = 全灰 / 黑白 → 错。颜色承担层级、状态与身份（Stripe 界面色彩丰富，视觉决策依然克制）。
+- Minimal = 删除说明文字 / label / 反馈 → 错。删必要信息是破坏可用性，不是简化。
+- Minimal = 全部去边框 → 错。border 承担分组、边界与输入暗示。
+- Minimal = 圆角归零 → 错。那是 Brutalist 的语言，Minimal 不排斥 radius。
+- Minimal = 不用动画 → 错。反馈 / 连续性动效要保留（S-03），删的是无目的 motion。
+- Minimal = 所有页面套同一模板 → 错。那是 generic：极简可以有个性（低无意义复杂度 + 品牌语言）。
+
+### 从真实产品提炼的决策规则
+
+| 来源案例 | 提炼出的规则 |
+| --- | --- |
+| Apple | 复杂度集中在有价值的地方——Minimal 不等于处处低视觉复杂度 |
+| Linear | 极简与高信息密度兼容：靠层级、分组与克制的状态表达，不靠空 |
+| Vercel | 单色系统 + 一致的边界与栅格：一致性本身就是极简 |
+| Stripe | 颜色可以丰富，视觉决策保持克制：Minimal ≠ monochrome |
+| Notion | 功能多与界面克制并存：降低每一时刻需要处理的视觉复杂度 |
+| Arc | 有性格的极简：个性来自品牌语言与布局，无意义复杂度保持低 |
+
+> 研究方法：按场景（login / dashboard / settings / table / empty state…）观察多个真实产品如何做减法，按「观察 → 可迁移规则 → 反例」转化，不停留在「好看」。
 
 ## Typography
 
@@ -77,4 +134,4 @@ warning      警告
 
 ## 最终走查（视觉部分）
 
-视觉走查并入统一清单 `references/checklist.md`（全局清单「视觉与动效」组 + §视觉附加项），本文件不再单独维护清单。核对时对照上方 Intent Translation 表与 tokens 数值。
+视觉走查并入统一清单 `references/checklist.md`（全局清单「视觉与动效」组 + §视觉附加项），本文件不再单独维护清单。核对时对照上方 Intent Translation 表、§Minimal Style Matrix 与 tokens 数值。

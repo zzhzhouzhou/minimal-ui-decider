@@ -2,7 +2,7 @@
 
 本文件是 Skill 的核心：**每次 UI 任务先读这里。** 规则按 C / M / S / Y 分级，使用稳定 ID，格式统一为 Rule → Check → Fail signal。
 
-> 引用约定：规则 ID（C/M/S/Y）指向本文件；回归测试场景使用 **T-01…T-12**（见 `tests/scenarios.md`），两套编号互不相干。
+> 引用约定：规则 ID（C/M/S/Y）指向本文件；回归测试场景使用 **T-01…T-13**（见 `tests/scenarios.md`），两套编号互不相干。
 
 ## 规则层级与优先级
 
@@ -301,6 +301,7 @@ Y: Follow user directly
 | 现有组件 90% 满足 | Adapt / Extend，保持 API（M-04） |
 | 需求超出已有能力 | Extend，或先判断原生控件是否足够 |
 | 用户要「高级一点」 | Intent Translation → 先 typography/spacing/hierarchy/material/subtle motion（`references/visual.md`） |
+| 用户要「简洁 / 极简」 | Minimal Style Preset（`references/visual.md`）：减少视觉决策，保留必要信息与反馈 |
 | 用户要特定高级效果 | 允许（Y），先跑复杂度测试 |
 | 选项 4–10 个 | native `<select>` |
 | 选项 >10 或需搜索 | combobox（`recipes/forms.md`） |

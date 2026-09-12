@@ -80,6 +80,7 @@ CRITICAL floor → User goal → Information architecture → Usability → Resp
 | 现有组件满足需求 / 90% 满足 | Reuse（M-01）/ Adapt·Extend 并保持 API（M-04） |
 | 现有依赖有能力 | 不装新依赖（M-03），inline SVG / 现有 hook / 原生 API |
 | 用户要「高级一点」 | Intent Translation → typography / spacing / hierarchy / subtle motion |
+| 用户要「简洁 / 极简」 | Minimal Style Preset（visual.md）：减少视觉决策，保留必要信息与反馈 |
 | 用户要特定高级效果 | 允许（Y），先跑复杂度测试 |
 | 选项 4–10 个 / >10 或需搜索 | native `<select>` / combobox |
 | 列表数据 < 100 条 | 普通列表（虚拟化本身是复杂度） |
@@ -97,7 +98,7 @@ CRITICAL floor → User goal → Information architecture → Usability → Resp
 | 规则全文 / 豁免 / 冲突处理（简单任务用上方「决策速查」即可） | `references/decision.md` | 大 |
 | 全局走查清单 + 自动化检查映射 | `references/checklist.md` | 中 |
 | Accessibility / 无障碍 | `references/accessibility.md` | 中 |
-| 视觉 / 层级 / 字体 / 色彩 / 品牌感（如「更高级」） | `references/visual.md`、`references/tokens.md` | 小 + 中 |
+| 视觉 / 层级 / 字体 / 色彩 / 品牌感（如「更高级」「更简洁」） | `references/visual.md`、`references/tokens.md` | 中 |
 | 交互状态 | `references/interaction.md` | 小 |
 | 响应式 / 断点 / 布局转换 | `references/responsive.md` | 小 |
 | 动画 / 动效 | `references/motion.md` | 小 |
@@ -118,7 +119,7 @@ CRITICAL floor → User goal → Information architecture → Usability → Resp
 - 用 `<div onClick>` 模拟原生交互（违反 C-03）。
 - 只靠颜色表达 error / selected / required（违反 C-05）。
 - 默认安装 Lucide / Radix / 其他 UI 库（违反 M-03）；优先 inline SVG 与已有能力。
-- 为了「极简」强制全灰（违反 visual 原则，见 `references/visual.md`）。
+- 把「极简」执行成全灰、删必要信息、边框/圆角/动效一刀切或泛模板（违反 `references/visual.md` §Minimal Style Preset，见 E-18…E-20）。
 - 把所有数字全部禁止在 token 文件之外出现（只集中 canonical token definitions，规则数字正常存在）。
 - 把 Existing Project First 理解成「旧代码永远不能改」（CRITICAL 无障碍问题必须指出并处理）。
 - 每次 UI 任务都询问用户。
@@ -126,7 +127,7 @@ CRITICAL floor → User goal → Information architecture → Usability → Resp
 - 未转义渲染用户输入 / 交互输出（违反 M-07）。
 - 机械关键词路由。
 
-完整反例见 `references/counterexamples.md`（E-01 … E-17，Wrong / Why / Right / Root cause / Related rules）。
+完整反例见 `references/counterexamples.md`（E-01 … E-20，Wrong / Why / Right / Root cause / Related rules）。
 
 ## 最终质量标准
 

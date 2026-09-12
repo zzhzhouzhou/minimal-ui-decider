@@ -92,9 +92,7 @@ minimal-ui-decider/
 │   ├── recipes/                     ← 按组件家族的实现模式：basic-components / forms / navigation /
 │   │                                   feedback-overlays / data-display / advanced-interactions
 │   └── tests/                       ← 行为回归：T-01…T-12 场景 + 预期行为 + 回归记录
-├── demo/
-│   └── admin-dashboard.html         ← 按规则实现的静态中后台页面，浏览器直接打开，可对照规则走查
-├── LICENSE · README.md · CHANGELOG.md
+├── LICENSE · README.md
 ```
 
 ## 安装与使用
@@ -134,7 +132,7 @@ minimal-ui-decider/
 - **新增反例**：遵循 `counterexamples.md` 的统一结构（Wrong / Why / Right / Root cause / Related rules），并同步更新文末「规则 ↔ 反例索引」。
 - **Handbook 新增组件时**：按 `handbook.md` §组件计数约定同步五处快照数字（handbook §事实、SKILL.md、README、engineering.md、CHANGELOG）。对外表述一律写「115+」，`+` 表示持续新增；数字不一致时以 handbook 清单实际 id 数为准。
 - **走查清单只改一处**：所有检查项集中在 `checklist.md`，各 reference / recipe 只引用，避免多份清单逐渐分歧。
-- 版本记录在 `CHANGELOG.md` 与 Git tags，不写入 frontmatter。
+- 版本记录在 Git tags，不写入 frontmatter。
 
 ## 相关链接
 

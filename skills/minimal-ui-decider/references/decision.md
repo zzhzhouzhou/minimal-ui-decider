@@ -278,7 +278,7 @@ Report → Fix if in scope → If user explicitly rejects, state risk（明确�
 
 ### S / Y
 
-直接按照用户需求，但告知重要 trade-off。
+直接按照用户需求，但告知重要 trade-off。现有项目文档（AGENTS.md / CLAUDE.md / 设计系统文档）的明确约定优先于 S/Y 默认值与 Visual Baseline（`references/minimal.md`）；C 层不可被项目约定绕过。
 
 ## Conflict Reporting（规则与用户需求冲突时）
 
@@ -301,7 +301,7 @@ Y: Follow user directly
 | 现有组件 90% 满足 | Adapt / Extend，保持 API（M-04） |
 | 需求超出已有能力 | Extend，或先判断原生控件是否足够 |
 | 用户要「高级一点」 | Intent Translation → 先 typography/spacing/hierarchy/material/subtle motion（`references/visual.md`） |
-| 用户要「简洁 / 极简」 | Minimal Style Preset（`references/visual.md`）：减少视觉决策，保留必要信息与反馈 |
+| 用户要「简洁 / 极简」 | Minimal Style Preset（`references/minimal.md`）：减少视觉决策，保留必要信息与反馈 |
 | 用户要特定高级效果 | 允许（Y），先跑复杂度测试 |
 | 选项 4–10 个 | native `<select>` |
 | 选项 >10 或需搜索 | combobox（`recipes/forms.md`） |

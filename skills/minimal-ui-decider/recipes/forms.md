@@ -6,6 +6,7 @@
 
 输入框四部分：**标签（永远在上方）→ 输入区 → 帮助文字 → 错误提示**。
 
+- **label / helper / error 是信息架构，不是装饰**：极简减少的是视觉噪音，不是字段信息（`references/minimal.md`）。
 - 错误提示：字段正下方，红字 + 图标（不只靠颜色，C-05），随输入实时更新。
 - 关联：`<label htmlFor>` + `aria-describedby`（帮助/错误）+ `aria-invalid`。
 - 选项 4–10 个用 `<select>`；>10 或需搜索用 combobox。

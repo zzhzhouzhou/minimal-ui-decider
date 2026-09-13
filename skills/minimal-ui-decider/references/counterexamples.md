@@ -493,23 +493,27 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 - M-05 · `interaction.md` 状态全集 · S-09
 
-## E-18 · Minimal misread as removing necessary information
+## E-18 · Minimal misread as removing necessary information or context
 
 **Wrong**
 
 ```tsx
 // 「做得极简一点」→ 删掉 label、帮助文字和错误提示
 <input placeholder="搜索" />
+
+// 删除确认弹窗只留一句问话，删掉后果上下文
+Delete project?
 ```
 
 **Why**
 
 - 删除必要信息不是简化，是破坏可用性：输入后字段含义消失（E-01）、错误不可见。
+- 删除决策所需的上下文（影响范围、后果、当前状态）会让用户更难做出正确决定。
 - 极简的对象是视觉决策，不是信息与反馈。
 
 **Right**
 
-保留 label / 帮助 / 错误 / 反馈；删除的是装饰、多余表面与无目的动效。
+保留 label / 帮助 / 错误 / 反馈 / 后果说明；删除的是装饰、多余表面与无目的动效。
 
 **Root cause**
 
@@ -517,7 +521,7 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 **Related rules**
 
-- C-04 · C-05 · `visual.md` §Minimal Style Preset
+- C-04 · C-05 · S-08 · `references/minimal.md`
 
 ## E-19 · Doctrinal stripping（教条式做减法）
 
@@ -537,7 +541,7 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 **Right**
 
-按 `visual.md` §Minimal Style Matrix 逐维决策：每个维度先问「它承担什么」，再决定去留；删的是无目的项。
+按 `references/minimal.md` §Style Matrix 逐维决策：每个维度先问「它承担什么」，再决定去留；删的是无目的项。
 
 **Root cause**
 
@@ -545,7 +549,7 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 **Related rules**
 
-- C-05 · S-03 · S-06 · `visual.md` §Minimal Style Preset 误读清单
+- C-05 · S-03 · S-06 · `references/minimal.md` 常见误读
 
 ## E-20 · One template for every page（泛模板化）
 
@@ -558,6 +562,7 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 **Why**
 
 - 这已经不是极简，而是 generic：层级、品牌与内容差异被模板抹平。
+- 一致 ≠ 千篇一律：一致性帮助预测，但不同内容（Dashboard / Docs / Landing）需要不同的信息结构。
 - 用户要求的是完成任务的结构，不是千篇一律的外观。
 
 **Right**
@@ -570,7 +575,35 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 
 **Related rules**
 
-- `visual.md` §Intent Translation · §Minimal Style Preset
+- `references/minimal.md` · `visual.md` §Intent Translation
+
+## E-21 · Discoverability sacrificed for cleanliness
+
+**Wrong**
+
+```tsx
+// 「干净」＝ 全部藏进汉堡菜单、全部 icon-only、高频动作塞进 More
+<nav className="hidden md:hidden">…</nav>   // 所有入口收进 ☰
+<button aria-label="搜索"><SearchIcon /></button>   // 工具栏连续 5 个无文字 icon
+```
+
+**Why**
+
+- 视觉复杂度 ↓ 但认知复杂度 ↑：用户要猜 icon 含义、记住藏在哪里。
+- 高频任务需要短路径；把高频动作深藏是用任务效率换视觉干净。
+- **一个明确的文字标签可能比一个含糊的 icon 更极简**——视觉元素变多、认知成本反而下降。
+
+**Right**
+
+按使用频率与任务关键性决定可见性：高频动作常驻（可配 icon + label），低频项渐进披露；icon-only 仅限形态足够明确且有 accessible name（C-02）的场景。
+
+**Root cause**
+
+把视觉复杂度和认知复杂度当成一回事，只优化了前者。
+
+**Related rules**
+
+- C-02 · C-06 · `references/minimal.md` §Decision Strategy
 
 ---
 
@@ -594,9 +627,10 @@ loading / empty / error 三态齐全；空态 = 图标 + 说明 + 行动。
 | 动效纪律 | E-06 | E-08、E-13 |
 | 资源清理 | E-13 | — |
 | 环境容错 | E-14 | — |
-| Minimal 误读（删必要信息） | E-18 | — |
+| Minimal 误读（删信息 / 上下文） | E-18 | — |
 | 教条式做减法 | E-19 | E-08 |
 | 泛模板化 | E-20 | — |
+| 可发现性 / 效率牺牲 | E-21 | — |
 | 复杂度测试 | E-05、E-08 | E-06 |
 
 > 维护约定：新增反例后同步更新本表；某规则连续两版都没有专属反例时，优先在下次迭代补充。（M-02 / M-04 / M-05 的缺口已于 v1.2.0 补齐：E-15 / E-16 / E-17。）

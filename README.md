@@ -17,6 +17,7 @@
 | placeholder 当 label、`<div onClick>` 当按钮、错误状态只有颜色 | C-03 / C-04 / C-05（CRITICAL 底线） |
 | 用户只要改个颜色，它顺手重构半个项目 | M-06 最小 diff |
 | 把「简洁」执行成删说明文字、全灰、去掉所有边框和动效 | Minimal Style Preset + 复杂度测试 |
+| 把「干净」执行成全部收进汉堡菜单、全部 icon-only | Minimal 决策策略：可发现性与任务完成优先（minimal.md） |
 | 声称「完成了」但没跑过任何检查 | 工作流第 10 步：交付前出示机械验证证据 |
 
 本 Skill 的做法：在 Agent 动手之前，给出一套决策顺序和规则编号；在交付之前，给出一份统一的走查清单。规则全部落在 Markdown 文件里，Agent 按任务加载，不依赖特定平台。
@@ -83,14 +84,15 @@ minimal-ui-decider/                   ← 仓库根
 │       │   ├── decision.md          ← C/M/S/Y 规则全文（Rule → Check → Fail signal）、豁免、冲突处理、决策矩阵
 │       │   ├── checklist.md         ← 唯一的统一走查清单（全局项 + 领域附加项 + 自动化检查映射）
 │       │   ├── accessibility.md     ← C-01…C-06 无障碍底线展开、对比度 canonical 定义
-│       │   ├── visual.md            ← 视觉层级、Intent Translation、Minimal Style Preset（默认视觉基线 + Style Matrix）
+│       │   ├── visual.md            ← 视觉层级、Intent Translation（「更高级」如何转译为设计策略）
+│       │   ├── minimal.md           ← Minimal Style Preset：默认视觉基线 + 决策策略（Style Matrix / 误读清单 / 边界自查）
 │       │   ├── tokens.md            ← 色彩 / 字阶 / 间距 / 圆角 / 层级 / 动效 / 断点的唯一定义处
 │       │   ├── interaction.md       ← 交互状态全集与反馈时机（100ms / 300ms / 3s）
 │       │   ├── responsive.md        ← 移动优先、布局转换、320px 底线
 │       │   ├── motion.md            ← 动效规则与动画令牌
 │       │   ├── engineering.md       ← 工程默认 + 非 React 项目的 Stack Adaptation 映射表
 │       │   ├── handbook.md          ← UI Handbook 事实来源 + 组件计数约定
-│       │   └── counterexamples.md   ← E-01…E-20 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
+│       │   └── counterexamples.md   ← E-01…E-21 反例（Wrong / Why / Right / Root cause）+ 规则↔反例索引
 │       ├── recipes/                 ← 按组件家族的实现模式：basic-components / forms / navigation /
 │       │                              feedback-overlays / data-display / advanced-interactions
 │       └── tests/                   ← 行为回归：T-01…T-13 场景 + 预期行为 + 回归记录

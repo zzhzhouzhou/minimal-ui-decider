@@ -9,6 +9,7 @@ feedback（反馈） · state transition（状态转换） · hierarchy（层级
 
 ## 规则
 
+- **动效解释变化（explain change），而不是装饰静止（decorate stillness）**——解释状态变化、空间关系与连续性的动效保留，页面级装饰动画默认关闭（Minimal 基线见 `references/minimal.md`）。
 - **只对 transform / opacity 做动画**（位置、大小、透明度），不要对 width / height / color 等属性动画——否则卡顿。**例外**：小面积 disclosure（accordion / details 类展开收起）可用 `grid-template-rows: 1fr ↔ 0fr` 过渡；判断标准是 layout 动画的**面积与频率**——小而低频可接受，大面积/高频（列表、页面级）不行。
 - **subtle / purposeful / interrupt-free**：动画快速、克制、可被打断（interrupt-free），新动画到来时立即接管。
 - 出现用「先快后慢」节奏（cubic-bezier 或 ease-out）；**退出比进入快约 20%**，界面才干脆。

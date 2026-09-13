@@ -13,6 +13,7 @@
 ## Card
 
 - 基础。表面 `bg-white dark:bg-zinc-900`；圆角用卡片档 12px（Tailwind 类名 `rounded-xl`，映射见 `tokens.md` §圆角）；阴影极淡、多层叠加，悬停升至 hover-card 档（层级 10）。
+- **Card 是分组工具，不是默认容器**：先扁平结构（内容 / 区块 / 控件 / 数据），分组需要时才引入容器；不要 Card 套 Card、不要为了「像 dashboard」给每个指标一个 Card（见 `references/minimal.md`）。
 - 卡片内再套元素：内圆角 = 外圆角 − 间距（`tokens.md`）。
 
 ## Table
@@ -33,6 +34,7 @@
 ## Stats（指标卡片 / 迷你图）
 
 - 等级：进阶。大数字 + 标签；趋势变化用色 + 箭头文字（不只靠颜色）；迷你图用 inline SVG（path + transform），可 `animate-countup`。
+- 不要为了展示数据而画图：先问这个图是否降低了数据理解成本，否则用数字 + 趋势文字表达。
 
 ## Code Block / Kbd
 

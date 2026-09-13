@@ -243,15 +243,15 @@ reduced motion 降级
 **Expected decision sequence**
 
 ```text
-Intent Translation（"更极简" → visual.md §Minimal Style Preset）
+Intent Translation（"更极简" → references/minimal.md Minimal Style Preset）
 区分「减少视觉决策」与「删除必要信息」：label / 帮助 / 错误 / 反馈全部保留
 逐项跑复杂度测试：删除的只有装饰、冗余表面与无目的动效
 高信息密度区域用层级 / 分组 / 渐进呈现处理，不删功能
-不强制全灰 / 无边框 / 零圆角 / 无动效（E-19）
+不强制全灰 / 无边框 / 零圆角 / 无动效（E-19）；不为干净牺牲可发现性（E-21）
 复用现有组件与 tokens；最小 diff（M-01 / M-06）
 ```
 
-**验收方式**：改动清单对照 Minimal Style Matrix 逐维核对；必要信息无缺失；适用交互状态（M-05）完整。
+**验收方式**：改动清单对照 Minimal Style Matrix 逐维核对；必要信息无缺失；可发现性与任务路径未受损；适用交互状态（M-05）完整。
 
 ## 半自动化运行建议（降低回归成本）
 

@@ -2,7 +2,23 @@
 
 本项目版本通过 CHANGELOG 与 Git tags 维护（不写入 SKILL.md frontmatter）。
 
-## v1.5.0 — 2026-09-12（未推送）
+## v1.6.0 — 2026-09-13
+
+Minimal 升级为「决策策略 + 视觉基线」双层规范，并补项目适配入口。**无规则 ID 语义变更**；新增反例 E-21。
+
+- 新增 **`references/minimal.md`** 作为 Minimal 的 canonical 规范，自 visual.md 迁入并扩充：
+  - 正式定义（受控的复杂度削减系统：视觉 / 信息 / 交互 / 系统四层，Effective Complexity = 四者之和）；Minimalism ≠ Simplicity ≠ Consistency 辨析。
+  - 三种状态（用户明确风格 / 模糊审美意图 / 未指定风格时的默认基线）与优先级链：CRITICAL floor > 用户明确风格 > Intent Translation > Visual Baseline > 通用 S/Y。
+  - **Decision Strategy 十步**（识别所需 → 删不必要决策 → 保留必要上下文 → 组织复杂度 → 暴露重要操作 → 渐进披露 → 建层级 → 降视觉竞争 → 验证可发现性 → 验证任务完成）。
+  - **Visual Baseline**：Neutral-first + Semantic color + Intentional accent；效果类（渐变 / glow / glass / 纹理）Default Off 而非禁止；分离优先级（spacing → 表面对比 → border → shadow → 强效果，结构分离优先于装饰抬升）；反 Cardification（Card 是分组工具不是默认容器）；角色化 typography 与有限层级数；radius / shadow 纪律；低存在感 motion；风格速览 yaml。
+  - Style Matrix、常见误读清单（新增「无限堆留白」）、案例提炼规则（补 Apple 的 Simplicity ≠ Minimalism 与 Vercel 的「角色而非零散属性」）、**边界自查表**（「看起来更极简」≠ 结果更好）。
+- visual.md 回归通用视觉决策，极简相关指向 minimal.md；SKILL.md 路由新增 minimal.md 行（中档）。
+- **项目适配入口**：SKILL.md 与 decision.md §Exemptions 增加「现有项目文档（AGENTS.md / CLAUDE.md / 设计系统文档）的明确约定优先于 S/Y 与 Visual Baseline；M 走豁免程序；C 层不可被项目约定绕过」。
+- 反例：E-18 扩展（补确认弹窗删除后果上下文）、E-20 扩展（一致性 ≠ 千篇一律）、新增 **E-21**（为视觉干净牺牲可发现性 / 效率：汉堡全藏 / icon-only 滥用 / 高频动作深藏；「明确的文字标签可能比含糊的 icon 更极简」）；索引与编号范围同步至 E-21。
+- 组件级规则回填：motion.md（动效解释变化而非装饰静止）、data-display.md（Card 分组工具 / 不为展示数据而画图）、navigation.md（导航极简 = 降认知混淆）、feedback-overlays.md（小 ≠ 该用 Modal）、forms.md（label / helper / error 是信息架构）。
+- checklist §视觉附加项：Minimal 逐维核对迁移至 minimal.md，新增效果类 opt-in 与分离优先级检查；T-13 预期同步（可发现性未受损）。
+
+## v1.5.0 — 2026-09-12
 
 Minimal Style Preset：把核心哲学具体化为可执行的默认视觉语言。**无规则 ID 语义变更**；新增反例 E-18…E-20、测试场景 T-13。
 
